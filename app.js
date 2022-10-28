@@ -26,6 +26,7 @@ app.use(cookieParser("secret"));
 
 app.get("/", (req, res) => {
   console.log("hello World");
+  console.log("asbdjasbdjkb");
   res.send("hello");
 });
 app.use("/auth", authRoutes);
