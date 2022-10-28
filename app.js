@@ -25,7 +25,6 @@ app.use(express.static("public"));
 app.use(cookieParser("secret"));
 
 app.get("/", (req, res) => {
-  console.log("hello World");
   res.send("hello");
 });
 app.use("/auth", authRoutes);
