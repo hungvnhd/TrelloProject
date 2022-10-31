@@ -29,6 +29,7 @@ app.use(cookieParser("secret"));
 
 app.get("/", (req, res) => {
 
+  console.log("fhhfc");
   res.send("hello");
 });
 
