@@ -3,8 +3,13 @@ let registerForm = document.getElementById("register-form");
 const confirmInputPassword =
   document.getElementsByClassName("confirmPassword")[0];
 const inputUrl = document.getElementsByClassName("url")[0];
+<<<<<<< HEAD
 const inputEmail = document.getElementsByClassName("email")[0]
 const inputPassword = document.getElementsByClassName("password")[0]
+=======
+const inputEmail = document.getElementsByClassName("email")[0];
+const inputPassword = document.getElementsByClassName("password")[0];
+>>>>>>> b388ffd8e4a2ddbfed798da981a5ea6350a11f89
 const showMessage = (message) => {
   let messageContainer = document.getElementsByClassName("message")[0];
   messageContainer.innerHTML = `<div class="alert alert-danger">${message}</div>`;

@@ -176,6 +176,12 @@ nav img{
     color:white
 
 }
-
+.nav-create-btn{
+    position: relative;
+}
+.create-board{
+   position: absolute;
+   z-index: 999;
+}
 
 
