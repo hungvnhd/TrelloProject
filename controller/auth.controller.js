@@ -59,6 +59,7 @@ module.exports.register = (req, res) => {
       console.log(data);
       res.status(200).json({
         message: "Create one succesfully",
+        status: "success"
       });
     })
     .catch((err) => res.status(500).json(err));
@@ -92,6 +93,7 @@ module.exports.login = (req, res) => {
           res.cookie("userId", find.id, { signed: true });
           res.status(200).json({
             message: "Login Successfully",
+            status: "success"
           });
         }
       }

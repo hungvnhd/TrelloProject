@@ -9,9 +9,13 @@ const cookieParser = require("cookie-parser");
 // import routes
 let userRoutes = require("./routes/user.routes");
 let authRoutes = require("./routes/auth.routes");
-let workspaceRoutes = require("./routes/workspace.routes");
-let workspaceBoardRoutes = require("./routes/workspaceboard.routes");
-let boardcardRoutes = require("./routes/boardcard.routes");
+let workspaceRoutes = require("./routes/workspace.routes")
+let workspaceBoardRoutes = require("./routes/workspaceboard.routes")
+let boardcardRoutes = require("./routes/boardcard.routes")
+let cardtodoRoutes = require("./routes/cardtodo.routes")
+// let workspaceRoutes = require("./routes/workspace.routes");
+// let workspaceBoardRoutes = require("./routes/workspaceboard.routes");
+// let boardcardRoutes = require("./routes/boardcard.routes");
 // let blogRoutes = require("./routes/blogs.routes");
 // const db = require("./models/db");
 
@@ -33,6 +37,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/auth", authRoutes);
+
 app.use("/user", userRoutes);
 
 app.use("/workspace", workspaceRoutes);
@@ -40,6 +45,8 @@ app.use("/workspace", workspaceRoutes);
 app.use("/workspaceboard", workspaceBoardRoutes);
 
 app.use("/boardcard", boardcardRoutes);
+
+app.use("/cardtodo", cardtodoRoutes)
 
 app.listen(3000, () => {
   console.log("server is running on port http://127.0.0.1:3000");

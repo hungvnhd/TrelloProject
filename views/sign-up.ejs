@@ -26,18 +26,18 @@
       <div class="sign-up-form">
         <div class="sign-up-form__title">Sign up for your account</div>
 
-        <form action="">
+        <form action="" id="register-form">
           <div>
-            <input type="email" placeholder="Email" />
+            <input type="email" name="email" placeholder="Email" />
           </div>
           <div>
-            <input type="password" placeholder="Password" />
+            <input type="password" name="password" placeholder="Password" />
           </div>
           <div>
-            <input type="password" placeholder="Confirm password" />
+            <input type="password" name="confirmpassword" placeholder="Confirm password" />
           </div>
           <div>
-            <input type="text" placeholder="Avatar URL(Optional)" />
+            <input type="text" name="url" placeholder="Avatar URL(Optional)" />
           </div>
           <div>
             <button id="sign-up-form__button">Continue</button>
@@ -64,5 +64,6 @@
         </form>
       </div>
     </div>
+    <script src="/register.js"></script>
   </body>
 </html>
