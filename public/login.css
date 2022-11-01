@@ -73,3 +73,22 @@ body{
     cursor: pointer;
 
 }
+#sign-up-redirect{
+    width: 320px;
+    height:40px;
+    background-color:#2877B9;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    text-align: center;
+    margin-left: 40px;
+    line-height: 40px;
+}
+#sign-up-redirect a{
+    text-decoration: none;
+    color:white;
+}
