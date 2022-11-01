@@ -7,12 +7,15 @@ const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 
 // import routes
-// let userRoutes = require("./routes/users.routes");
+let userRoutes = require("./routes/user.routes");
 let authRoutes = require("./routes/auth.routes");
 let workspaceRoutes = require("./routes/workspace.routes")
 let workspaceBoardRoutes = require("./routes/workspaceboard.routes")
 let boardcardRoutes = require("./routes/boardcard.routes")
 let cardtodoRoutes = require("./routes/cardtodo.routes")
+// let workspaceRoutes = require("./routes/workspace.routes");
+// let workspaceBoardRoutes = require("./routes/workspaceboard.routes");
+// let boardcardRoutes = require("./routes/boardcard.routes");
 // let blogRoutes = require("./routes/blogs.routes");
 // const db = require("./models/db");
 
@@ -29,19 +32,19 @@ app.use(express.static("public"));
 app.use(cookieParser("secret"));
 
 app.get("/", (req, res) => {
-
   console.log("fhhfc");
   res.send("hello");
 });
 
 app.use("/auth", authRoutes);
 
+app.use("/user", userRoutes);
 
-app.use("/workspace", workspaceRoutes)
+app.use("/workspace", workspaceRoutes);
 
-app.use("/workspaceboard", workspaceBoardRoutes)
+app.use("/workspaceboard", workspaceBoardRoutes);
 
-app.use("/boardcard", boardcardRoutes)
+app.use("/boardcard", boardcardRoutes);
 
 app.use("/cardtodo", cardtodoRoutes)
 

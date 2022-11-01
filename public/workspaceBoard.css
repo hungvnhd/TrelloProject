@@ -1,0 +1,229 @@
+*{
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+body{
+    width: 100%;
+    background: url("https://images.pexels.com/photos/2258536/pexels-photo-2258536.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+    background-size: cover;
+}
+
+nav{
+    width: 100%;
+    background-color: var(--ds-background-brand-bold-hovered, #4D4D4F);
+    border-bottom: 1px solid var(--dynamic-text-color-transparent);
+    box-sizing: border-box;
+    display: flex;
+    overflow: hidden;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    max-height: 44px;
+    padding: 6px 4px;
+}
+nav img{
+    width: 90px;
+}
+.nav-dropdown{
+    background-color: #4D4D4F;
+    border:none;
+    color:white;
+    font-size: 15px;
+    margin-left:10px;
+    margin-right: 10px;
+    padding-top: 5px;
+    padding-bottom:5px;
+    padding-left:5px;
+    padding-right:5px;
+    border-radius: 3px;
+
+}
+.nav-dropdown:hover{
+    background-color:#838384;
+}
+.nav-create-btn{
+    background-color: #717172;
+    border:none;
+    color:white;
+    font-size: 15px;
+    margin-left:20px;
+    margin-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 5px;
+}
+.nav-search{
+    background-color: #717172;
+    border: none;
+    caret-color: white;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    float: end;
+}
+.nav-search:hover{
+    background-color: #949495;
+}
+
+
+.nav-search::placeholder{
+    color:white;
+}
+.nav-search:focus{
+    outline: none;
+}
+
+.leftside-nav{
+    width: 260px;
+    height:100vh;
+    background: rgba(179, 179, 179, 0.4);
+
+    opacity:0.85;
+    color:white;
+    
+}
+.workspace-name{
+    font-size:16px;
+    font-weight: 600;
+    height:80px;
+    border-bottom: 1px solid white;
+    line-height: 80px;
+    padding-left: 10px;
+}
+.left-items{
+    width: 260px;
+    height: 35px;
+    
+    margin-top:5px;
+    margin-bottom: 5px;
+    line-height: 35px;
+    padding-left: 20px;
+  
+    font-weight: 600;
+    cursor: pointer;
+
+}
+.left-items:hover{
+    background-color: #7C7C7F;
+}
+.left-items span{
+    margin-right: 10px;
+}
+.workspace-views{
+    padding-left: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.views-items{
+    font-style: italic;
+    width: 260px;
+    height: 35px;
+    
+    margin-top:5px;
+    margin-bottom: 5px;
+    line-height: 35px;
+    padding-left: 10px;
+  
+    font-weight: 600;
+    cursor: pointer;
+}
+.views-items i{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.views-items:hover{
+    background-color: #7C7C7F;
+}
+.user-boards__items{
+    padding-left: 20px;
+    padding-bottom: 10px;
+    height:35px;
+    line-height: 35px;
+    cursor: pointer;
+}
+.user-boards__items:hover{
+    background-color: #7C7C7F;
+
+}
+.user-boards__items img{
+    width: 25px;
+    height:20px;
+}
+.user-boards__items span{
+    font-size:14px;
+
+}
+.main-layout{
+    display:flex;
+}
+.rightside-layout__title{
+    color:white;
+    height:80px;
+    line-height: 80px;
+}
+.rightside-layout__title span{
+   
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #B4B4B5;
+    border-radius: 3px;
+    cursor: pointer;
+    background: rgba(179, 179, 179, 0.2);
+}
+.cards{
+    width:273px;
+    background-color: #EBECF0;
+    border-radius: 4px;
+    padding-left:5px;
+    padding-right: 5px;
+    margin:10px
+}
+.card-name{
+    
+    color: #182B4B;
+    font-weight: 700;
+    margin: 5px;
+    height:35px;
+    line-height: 35px;
+    margin-left: 10px;
+
+}
+.card-todo{
+background-color: #FFFFFF;
+width: 96%;
+margin-left: 5px;
+border-radius: 4px;
+padding-top:5px;
+padding-bottom: 5px;
+margin-top:5px;
+margin-bottom:5px;
+}
+.card-todo:hover{
+    background-color: #F4F5F7;
+    cursor: pointer;
+}
+.cards-create{
+    padding-left: 5px;
+    
+    margin-top: 10px;
+    height: 35px;
+    line-height: 35px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.cards-create:hover{
+    cursor: pointer;
+    background-color: #DADBE2;
+}
+.cards-layout{
+    margin-left: 30px;
+}
