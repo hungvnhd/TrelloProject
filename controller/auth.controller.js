@@ -90,7 +90,7 @@ module.exports.login = (req, res) => {
             message: "Wrong password",
           });
         } else {
-          // res.cookie("userId", find.id, { signed: true });
+          res.cookie("userId", find.user_id, { signed: true });
           res.status(200).json({
             message: "Login Successfully",
             status: "success",

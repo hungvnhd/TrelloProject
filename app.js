@@ -9,10 +9,14 @@ const cookieParser = require("cookie-parser");
 // import routes
 let userRoutes = require("./routes/user.routes");
 let authRoutes = require("./routes/auth.routes");
-let workspaceRoutes = require("./routes/workspace.routes")
-let workspaceBoardRoutes = require("./routes/workspaceboard.routes")
-let boardcardRoutes = require("./routes/boardcard.routes")
-let cardtodoRoutes = require("./routes/cardtodo.routes")
+let workspaceRoutes = require("./routes/workspace.routes");
+let workspaceBoardRoutes = require("./routes/workspaceboard.routes");
+let boardcardRoutes = require("./routes/boardcard.routes");
+let cardtodoRoutes = require("./routes/cardtodo.routes");
+const {
+  requireAuth,
+  notRequireAuth,
+} = require("./middlewares/auth.middlewares");
 // let workspaceRoutes = require("./routes/workspace.routes");
 // let workspaceBoardRoutes = require("./routes/workspaceboard.routes");
 // let boardcardRoutes = require("./routes/boardcard.routes");
@@ -32,13 +36,12 @@ app.use(express.static("public"));
 app.use(cookieParser("secret"));
 
 app.get("/", (req, res) => {
-  console.log("fhhfc");
-  res.send("hello");
+  res.redirect("/user");
 });
 
-app.use("/auth", authRoutes);
+app.use("/auth", notRequireAuth, authRoutes);
 
-app.use("/user", userRoutes);
+app.use("/user", requireAuth, userRoutes);
 
 app.use("/workspace", workspaceRoutes);
 
@@ -46,7 +49,7 @@ app.use("/workspaceboard", workspaceBoardRoutes);
 
 app.use("/boardcard", boardcardRoutes);
 
-app.use("/cardtodo", cardtodoRoutes)
+app.use("/cardtodo", cardtodoRoutes);
 
 app.listen(3000, () => {
   console.log("server is running on port http://127.0.0.1:3000");
