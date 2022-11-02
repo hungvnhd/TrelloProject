@@ -4,10 +4,13 @@ module.exports.getAllWorkspaceBoard = (req, res) => {
   db.execute("SELECT * FROM tbl_workspaceboards")
     .then((data) => {
       let [rows] = data;
-      console.log(rows);
-      res.status(200).json({
+      // console.log(rows);
+      res.render("homepage.ejs", {
         data: rows,
       });
+      // res.status(200).json({
+      //   data: rows,
+      // });
     })
     .catch((err) => console.log(err));
 };
@@ -64,14 +67,13 @@ module.exports.updateWorkspaceBoard = (req, res) => {
     .catch((err) => console.log(err));
 };
 
-
-module.exports.deleteWorkspaceBoard = (req, res)=>{
-    let {id} = req.params
-    db.execute("DELETE FROM tbl_workspaceboards WHERE id =?", [id])
-    .then((data)=>{
-        res.status(200).json({
-            message:"Delete one successfully"
-        })
+module.exports.deleteWorkspaceBoard = (req, res) => {
+  let { id } = req.params;
+  db.execute("DELETE FROM tbl_workspaceboards WHERE id =?", [id])
+    .then((data) => {
+      res.status(200).json({
+        message: "Delete one successfully",
+      });
     })
-    .catch((err)=>console.log(err))
-}
+    .catch((err) => console.log(err));
+};
