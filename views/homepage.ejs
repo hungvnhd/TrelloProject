@@ -183,9 +183,9 @@
           <div class="workspaces-left-layout">
             <% for( let i = 0; i < data.length; i++ ) { %>
             
-            
+            <div class="<%= data[i].id%> workspace-loader">
             <div>
-              <span class="workspaces-name"><span class="workspace-icon"><%=data[i].name.charAt().toUpperCase()  %> </span> <%= data[i].name  %> </span>
+              <span class="workspaces-name"><span class="workspace-icon"><%=data[i].name.charAt().toUpperCase()  %> </span> <%= data[i].name  %> <button class="edit-btn">Edit</i></butt> </span>
             </div>
             <div class="workspace-list-items">
               <div class="workspace-items"><span><i class="fa-brands fa-flipboard"></i></span>Boards</div>
@@ -193,8 +193,11 @@
               <div class="workspace-items"><span><i class="fa-solid fa-eye"></i></span>Views</div>
               <div class="workspace-items"><span><i class="fa-solid fa-users"></i></span>Members</div>
               <div class="workspace-items"><span><i class="fa-solid fa-gear"></i></span>Settings</div>
+              <div class="workspace-items delete-btn"><span><i class="fa-solid fa-trash"></i></span>Delete</div>
+              
   
             </div>
+          </div>
             <% } %>
           </div>
         </div>
@@ -234,3 +237,4 @@
     <script src="/homepage.js"></script>
   </body>
 </html>
+

@@ -71,7 +71,7 @@ module.exports.updateWorkspace = (req, res) => {
 };
 
 module.exports.deleteWorkspace = (req, res) => {
-  let { id } = req.body;
+  let id = req.params.id;
   db.execute("DELETE FROM tbl_workspaces WHERE id = ?", [id])
     .then((data) => {
       console.log(data);

@@ -271,6 +271,26 @@ textarea:focus{
 .form-create-submit-btn:hover{
     cursor: not-allowed;
 }
+.edit-btn{
+    /* margin-left: 130px; */
+    color:#5D6A7F; 
+    cursor: pointer;
+    padding-left: 10px;
+    padding-right: 10px;
+    border:none;
+    border-radius: 4px;
+    float: right;
+    background-color: white;
+}
+.edit-btn:hover{
+    background-color: #E7E9ED;
+}
+.edit-btn i{
+    z-index: -999;
+}
+.workspace-loader{
+    margin-top: 10px;
+}
 
 
 
