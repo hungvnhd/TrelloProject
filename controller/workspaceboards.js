@@ -27,6 +27,7 @@ module.exports.getAllByIdWorkspaceBoard = (req, res) => {
 };
 
 module.exports.createWorkspaceBoard = (req, res) => {
+  let workspaceId = req.params.id;
   let name = req.body.name;
   if (!name) {
     res.status(200).json({
@@ -43,7 +44,7 @@ module.exports.createWorkspaceBoard = (req, res) => {
       } else {
         return db.execute(
           "INSERT INTO tbl_workspaceboards VALUE (?, ?, ?, ?)",
-          [id, name, null, null]
+          [id, name, workspaceId, null]
         );
       }
     })

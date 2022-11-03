@@ -4,6 +4,7 @@ module.exports.getAllWorkspace = (req, res) => {
   db.execute("SELECT * FROM tbl_workspaces")
     .then((data) => {
       let [rows] = data;
+      console.log(rows);
       res.render("homepage.ejs", {
         data: rows,
       });
@@ -28,7 +29,7 @@ module.exports.getAllIdWorkspace = (req, res) => {
 module.exports.createWorkspace = (req, res) => {
   let { name } = req.body;
   let userId = req.signedCookies.userId;
-  console.log(userId);
+  // console.log(userId);
   if (!name) {
     return res.status(500).json({
       message: "Invail name",
@@ -38,7 +39,7 @@ module.exports.createWorkspace = (req, res) => {
   db.execute("SELECT * FROM tbl_workspaces WHERE name = ?", [name])
     .then((data) => {
       let [rows] = data;
-      console.log(data);
+      // console.log(data);
       if (rows.length > 0) {
         return Promise.reject("User already exist");
       } else {
@@ -54,6 +55,9 @@ module.exports.createWorkspace = (req, res) => {
       res.status(200).json({
         message: "Create one succesfully",
       });
+      // res.render("homepage.ejs", {
+      //   id: id,
+      // });
     })
     .catch((err) => console.log(err));
 };
