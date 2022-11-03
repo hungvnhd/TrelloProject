@@ -35,27 +35,6 @@ module.exports.createWorkspace = (req, res) => {
       message: "Invail name",
     });
   }
-
-  
-module.exports.updateWorkspace= (req, res) => {
-    let { id } = req.params;
-    let { name} = req.body;
-    db.execute("UPDATE tbl_workspaces SET name = ? WHERE id = ?", [
-    name,
-    id,
-    ])
-      .then((data) => {
-        res.status(200).json({
-          message: "Update one successfully",
-        });
-      })
-      .catch((err) => console.log(err));
-  }
-
-  module.exports.deleteWorkspace= (req, res) => {
-    let { id } = req.params;
-    db.execute("DELETE FROM tbl_workspaces WHERE userID = ?", [id])
-    .then((data)=>{
   let id = Math.floor(Math.random() * 1000000);
   db.execute("SELECT * FROM tbl_workspaces WHERE name = ?", [name])
     .then((data) => {
@@ -80,8 +59,8 @@ module.exports.updateWorkspace= (req, res) => {
       //   id: id,
       // });
     })
-    .catch((err)=> console.log({message: err}))
-  })
+    .catch((err) => console.log(err));
+};
 
 module.exports.updateWorkspace = (req, res) => {
   let { id } = req.params;
@@ -105,4 +84,4 @@ module.exports.deleteWorkspace = (req, res) => {
       });
     })
     .catch((err) => console.log(err));
-  }
+};
