@@ -4,3 +4,9 @@ module.exports.renderHomepage = (req, res) => {
 module.exports.renderBoard = (req, res) => {
   res.render("workspaceBoard.ejs");
 };
+
+
+
+module.exports.renderAdmin =(req, res)=>{
+  res.render("admin.ejs")
+}

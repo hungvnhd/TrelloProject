@@ -12,4 +12,7 @@ router.post("/login", authController.login)
 
 router.get("/board", authController.renderBoard);
 
+
+
+
 module.exports = router;

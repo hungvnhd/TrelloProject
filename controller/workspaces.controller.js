@@ -74,14 +74,14 @@ module.exports.updateWorkspace= (req, res) => {
   }
 
   module.exports.deleteWorkspace= (req, res) => {
-    let { id } = req.body;
-    db.execute("DELETE FROM tbl_workspaces WHERE id = ?", [id])
+    let { id } = req.params;
+    db.execute("DELETE FROM tbl_workspaces WHERE userID = ?", [id])
     .then((data)=>{
       console.log(data);
       res.status(200).json({
           message: "Delete one successfully",
         });
     })
-    .catch((err)=> console.log(err))
+    .catch((err)=> console.log({message: err}))
   }
 

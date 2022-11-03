@@ -13,7 +13,7 @@ module.exports.getAllBoardCard = (req, res) => {
 
 module.exports.getAllByIdBoardCard = (req, res) => {
   let { id } = req.params;
-  db.execute("SELECT * FROM tbl_boardcards WHERE id1 =?", [id])
+  db.execute("SELECT * FROM tbl_boardcards WHERE id =?", [id])
     .then((data) => {
       let [rows] = data;
       res.status(200).json({
@@ -55,7 +55,7 @@ module.exports.createBoardCard = (req, res) => {
   module.exports.updateBoardCard =(req, res)=>{
     let {id} = req.params
     let {name} = req.body
-    db.execute("UPDATE tbl_boardcards SET name =? WHERE id1 = ?", [name, id])
+    db.execute("UPDATE tbl_boardcards SET name =? WHERE id = ?", [name, id])
     .then((data)=>{
         res.status(200).json({
             message: "Updata one successfully"
@@ -66,7 +66,7 @@ module.exports.createBoardCard = (req, res) => {
 
   module.exports.deleteBoardCard = (req, res)=>{
     let {id} = req.params
-    db.execute("DELETE FROM tbl_boardcards WHERE id1 =?", [id])
+    db.execute("DELETE FROM tbl_boardcards WHERE boardID =?", [id])
     .then((data)=>{
         res.status(200).json({
             message: "Delete one successfully"

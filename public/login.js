@@ -1,12 +1,10 @@
 let baseApi = "http://127.0.0.1:3000/";
 let loginForm = document.getElementById("login-form");
 
+
 const showMessage = (message) => {
   let messageContainer = document.getElementsByClassName("message")[0];
   messageContainer.innerHTML = `<div class="alert alert-danger">${message}</div>`;
-  setTimeout(() => {
-    messageContainer.innerHTML = "";
-  }, 3000);
 };
 
 loginForm.addEventListener("submit", function (e) {
@@ -29,7 +27,7 @@ loginForm.addEventListener("submit", function (e) {
     .then((data) => {
       if (data.status === "success") {
         alert("đăng nhập thành công");
-        window.location.href = "/user";
+        window.location.href = "/";
       } else {
         showMessage(data.message);
       }

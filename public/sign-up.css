@@ -78,3 +78,16 @@ body{
     float: left;
     margin-left: 45px;
 }
+
+input:placeholder-shown ~ label::before{
+    content: attr(data-empty);
+    color: #8AACB2;
+}
+input:not(:placeholder-shown):valid ~ label::before{
+    content: attr(data-valid);
+    color: #58B05E;
+}
+input:valid ~ label::before{
+    content: attr(data-invalid);
+    color: #f44947;
+}

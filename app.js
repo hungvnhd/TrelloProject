@@ -7,6 +7,7 @@ const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 
 // import routes
+let adminRoutes = require("./routes/admin.routes");
 let userRoutes = require("./routes/user.routes");
 let authRoutes = require("./routes/auth.routes");
 let workspaceRoutes = require("./routes/workspace.routes");
@@ -16,6 +17,7 @@ let cardtodoRoutes = require("./routes/cardtodo.routes");
 const {
   requireAuth,
   notRequireAuth,
+  requireAdmin,
 } = require("./middlewares/auth.middlewares");
 // let workspaceRoutes = require("./routes/workspace.routes");
 // let workspaceBoardRoutes = require("./routes/workspaceboard.routes");
@@ -35,9 +37,10 @@ app.use(morgan("dev"));
 app.use(express.static("public"));
 app.use(cookieParser("secret"));
 
-app.get("/", (req, res) => {
+app.get("/", requireAdmin, (req, res) => {
   res.redirect("/user");
 });
+app.use("/admin", adminRoutes);
 
 app.use("/auth", notRequireAuth, authRoutes);
 

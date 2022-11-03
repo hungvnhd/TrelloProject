@@ -39,8 +39,8 @@ module.exports.createWorkspaceBoard = (req, res) => {
         return Promise.reject("User already exits");
       } else {
         return db.execute(
-          "INSERT INTO tbl_workspaceboards VALUE (?, ?, ?, ?)",
-          [id, name, null, null]
+          "INSERT INTO tbl_workspaceboards VALUE (?, ?, ?)",
+          [id, name, null]
         );
       }
     })
@@ -67,11 +67,11 @@ module.exports.updateWorkspaceBoard = (req, res) => {
 
 module.exports.deleteWorkspaceBoard = (req, res)=>{
     let {id} = req.params
-    db.execute("DELETE FROM tbl_workspaceboards WHERE id =?", [id])
+    db.execute("DELETE FROM tbl_workspaceboards WHERE workspaceID =?", [id])
     .then((data)=>{
         res.status(200).json({
             message:"Delete one successfully"
         })
     })
-    .catch((err)=>console.log(err))
+    .catch((err)=>console.log({message: err}))
 }

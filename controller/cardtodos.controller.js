@@ -14,7 +14,7 @@ module.exports.getAllCardTodos=(req, res)=>{
 
 module.exports.getAllByIdCardTodos=(req, res)=>{
     let {id} = req.params
-    db.execute("SELECT *FROM tbl_cardtodos WHERE id2 =?", [id])
+    db.execute("SELECT *FROM tbl_cardtodos WHERE id =?", [id])
     .then((data)=>{
         let [rows] = data
         res.status(200).json({
@@ -39,8 +39,8 @@ module.exports.createCardTodos = (req, res) => {
           return Promise.reject("User already exits");
         } else {
           return db.execute(
-            "INSERT INTO tbl_cardtodos VALUE (?, ?)",
-            [id, name]
+            "INSERT INTO tbl_cardtodos VALUE (?, ?, ?)",
+            [id, name, null]
           );
         }
       })
@@ -66,11 +66,13 @@ module.exports.createCardTodos = (req, res) => {
 
   module.exports.deleteCardTodos = (req, res)=>{
     let {id} = req.params;
-    db.execute("DELETE FROM tbl_cardtodos WHERE id2=?", [id])
-    .then((err)=>{
+    db.execute("DELETE FROM tbl_cardtodos WHERE cardId=?", [id])
+    .then((data)=>{
         res.status(200).json({
             message: "Delete one successfully"
         })
     })
-    .catch((err)=>console.log(err))
+    .catch((err)=>console.log({
+      message: err
+    }))
   }
