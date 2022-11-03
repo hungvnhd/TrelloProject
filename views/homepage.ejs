@@ -134,11 +134,58 @@
         <div class="main-layout-left__second">
           <div class="second-workspaces__title">
             <div class="workspaces-title">Workspaces</div>
-            <span><i class="fa-solid fa-plus"></i></span>
+           
+            <button class="create-new-workspace btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-plus"></i></button>
+             <!-- bootstrap -->
+             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-xl">
+                <div class="modal-content create-workspace">
+                  <div class="modal-header no-border">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body modal-body-layout">
+                    <div class="create-header">
+                      Let's build a workspace
+                    </div>
+                    <div class="create-content">
+                      Boost your productivity by making it easier for <br> everyone to access boards in one location.
+                    </div>
+                    <form action="" id="create-workspace-form">
+                      <div class="form-workspace-name">
+                          Workspace name
+                      </div>
+                      <div>
+                        <input type="text" placeholder="Taco's Co." name="workspaceName" class="form-workspace-name-input">
+                      </div>
+                      <div class="form-descriptions">
+                        This is the name of your company, team or organization
+                      </div>
+                      <div class="form-workspace-name">
+                          Workspace descriptions(Optional)
+                      </div>
+                      <div>
+                        <textarea name="" id="" cols="50" rows="10" placeholder="Our team organizes everything here"></textarea>
+                      </div>
+                      <div class="form-descriptions">
+                        Get your members on board with a few words about your Workspace.
+                      </div>
+                      <button class="form-create-submit-btn">Continue</button>
+                    </form>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+            
+            <!-- bootstrap -->
           </div>
           <div class="workspaces-left-layout">
-            <div class="workspaces-name" >
-              Trello workspace
+            <% for( let i = 0; i < data.length; i++ ) { %>
+            
+            <div class="<%= data[i].id%> workspace-loader">
+            <div>
+              <span class="workspaces-name"><span class="workspace-icon"><%=data[i].name.charAt().toUpperCase()  %> </span> <%= data[i].name  %> <button class="edit-btn">Edit</i></butt> </span>
             </div>
             <div class="workspace-list-items">
               <div class="workspace-items"><span><i class="fa-brands fa-flipboard"></i></span>Boards</div>
@@ -146,15 +193,24 @@
               <div class="workspace-items"><span><i class="fa-solid fa-eye"></i></span>Views</div>
               <div class="workspace-items"><span><i class="fa-solid fa-users"></i></span>Members</div>
               <div class="workspace-items"><span><i class="fa-solid fa-gear"></i></span>Settings</div>
+              <div class="workspace-items delete-btn"><span><i class="fa-solid fa-trash"></i></span>Delete</div>
+              
   
             </div>
+          </div>
+            <% } %>
           </div>
         </div>
       </div>
       <div class="right-layout">
         <div class="workspace-title">YOUR WORKSPACES</div>
+        <% for( let i = 0; i < data.length; i++ ) { %>
+        
+       
         <div class="workspace-selections">
-          <div class="workspace-name">Your Trello</div>
+          <div> 
+            <span class="workspaces-name"><span class="workspace-icon"><%=data[i].name.charAt().toUpperCase()  %> </span> <%= data[i].name  %> </span>
+          </div>
           <div class="selections-items"><span><i class="fa-brands fa-flipboard"></i></span>Boards</div>
           <div class="selections-items"><span><i class="fa-solid fa-eye"></i></span>View</div>
           <div class="selections-items"><span><i class="fa-solid fa-users"></i></span>Members</div>
@@ -166,25 +222,10 @@
             <div class="col-3 boards-items">hello2</div>
             <div class="col-3 boards-items">hello3</div>
             <div class="col-3 boards-items">hello4</div>
-
-
-
-
-
-            
-
-       
-
-           
-
-            
-
           </div>
         </div>
+        <% } %>
       </div>
-
-      
-
     </div>
 
 
@@ -193,5 +234,7 @@
       integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
       crossorigin="anonymous"
     ></script>
+    <script src="/homepage.js"></script>
   </body>
 </html>
+

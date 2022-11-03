@@ -4,10 +4,13 @@ module.exports.getAllWorkspaceBoard = (req, res) => {
   db.execute("SELECT * FROM tbl_workspaceboards")
     .then((data) => {
       let [rows] = data;
-      console.log(rows);
-      res.status(200).json({
+      // console.log(rows);
+      res.render("homepage.ejs", {
         data: rows,
       });
+      // res.status(200).json({
+      //   data: rows,
+      // });
     })
     .catch((err) => console.log(err));
 };
