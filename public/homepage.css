@@ -4,6 +4,9 @@
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
 }
+body{
+    background-color: #FAFBFC;
+}
 
 nav{
     background-color: var(--ds-background-brand-bold-hovered, #026AA7);
@@ -291,6 +294,102 @@ textarea:focus{
 .workspace-loader{
     margin-top: 10px;
 }
+.modal-2-body{
+    background: none;
+}
+.relative{
+    position: relative;
+}
+.board-create{
+    border: 1px solid #d1d1d2;
+    width: 300px;
+    padding:10px;
+    border-radius: 4px;
+    background-color: white;
+    position: absolute;
+    right:50px;
+    
+    z-index: 999;
+    /* display: none; */
+    
+
+}
+.create-template{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.create-template img{
+    width: 200px;
+    height:120px;
+    border-radius: 4px;
+}
+.background-selections{
+    display: flex;
+}
+.background-selections img{
+width: 60px;
+height: 35px;
+margin: 5px;
+border-radius: 4px;
+
+}
+.create-board-text{
+    color:#5F6C83;
+    font-size: 16px;
+    text-align: center;
+    height:40px;
+    border-bottom: 1px solid #d1d1d2;
+    line-height: 30px;
+}
+.create-title{
+    color:#5F6C83;
+    font-weight: 700;
+    font-size: 14px;
+    
+
+}
+.close-button{
+    float: right;
+}
+.form-create input{
+width: 280px;
+text-align: center;
+border:2px solid #E5604C;
+padding-top:5px;
+padding-bottom: 5px;
+border-radius: 4px;
+}
+.create-board-warning{
+    font-size: 12px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+.create-board-workspace-name{
+    width: 280px;
+    height:40px;
+    border: 2px solid #d1d1d2;
+    line-height: 40px;
+    border-radius: 4px;
+}
+.create-board-submit-btn{
+background-color: #F5F6F8;
+color:#A5ADB9;
+border:none;
+width:280px;
+height: 40px;
+line-height: 40px;
+border-radius: 4px;
+margin-top: 10px;
+margin-bottom: 10px;
+}
+.none{
+    display: none;
+}
+.block{
+    display: block;
+}
+
 
 
 

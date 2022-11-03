@@ -7,6 +7,12 @@ let deleteBtn = document.querySelectorAll(".delete-btn");
 // console.log(deleteBtn);
 let editBtn = document.querySelectorAll(".edit-btn");
 // console.log(editBtn);
+let createBoard = document.querySelectorAll(".create-new-board");
+// console.log(createBoard);
+let boardCreateForm = document.querySelectorAll(".form-create");
+// console.log(boardCreateForm);
+let backgroundSelection = document.querySelectorAll(".background-selections");
+console.log(backgroundSelection);
 
 workspaceNameInput.onkeyup = () => {
   if (workspaceNameInput.value === "") {
@@ -125,5 +131,60 @@ editBtn.forEach((e) => {
         }
       };
     });
+  };
+});
+
+createBoard.forEach((e) => {
+  e.onclick = () => {
+    console.log(e.parentElement.children[1].classList);
+    if (e.parentElement.children[1].classList.contains("none")) {
+      e.parentElement.children[1].classList.remove("none");
+    } else {
+      e.parentElement.children[1].classList.add("none");
+    }
+    // console.log(event.target.parentElement.children[5].children[1]);
+  };
+});
+
+boardCreateForm.forEach((e) => {
+  e.children[5].disabled = true;
+  e.children[5].style.cursor = "not-allowed";
+  // console.log(e.children[5]);
+  e.newBoardName.onkeyup = () => {
+    if (e.newBoardName.value === "") {
+      e.newBoardName.style.borderColor = "#B66361";
+      e.children[5].disabled = true;
+      e.children[5].style.backgroundColor = "#F5F6F8";
+      e.children[5].style.color = "#A5ADB9";
+      e.children[5].style.cursor = "not-allowed";
+    } else {
+      e.children[5].disabled = false;
+      e.newBoardName.style.border = "2px solid #1769A4 ";
+      e.children[5].style.backgroundColor = "#1B78BC";
+      e.children[5].style.color = "white";
+      e.children[5].style.cursor = "pointer";
+      e.onsubmit = (event) => {
+        event.preventDefault();
+        let data = {
+          workspaceId: e.classList[1],
+          name: e.newBoardName.value,
+        };
+        fetch(`/workspaceboard/${e.classList[1]}`, {
+          method: "POST", // or 'PUT'
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            window.location.href = "/workspace";
+            console.log("Success:", data);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      };
+    }
   };
 });
