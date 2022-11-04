@@ -4,7 +4,7 @@ const workspaceboardController = require("../controller/workspaceboards");
 
 router.get("/", workspaceboardController.getAllWorkspaceBoard);
 
-router.get("/:id", workspaceboardController.getAllByIdWorkspaceBoard);
+router.get("/:id/:boardID", workspaceboardController.getAllByIdWorkspaceBoard);
 
 router.post("/:id", workspaceboardController.createWorkspaceBoard);
 

@@ -326,6 +326,8 @@ textarea:focus{
 }
 .background-selections{
     display: flex;
+    list-style-type: none;
+    padding: 0;
 }
 .background-selections img{
 width: 60px;
@@ -389,10 +391,20 @@ margin-bottom: 10px;
 .block{
     display: block;
 }
+.select-img{
+    width: 60px;
+height: 35px;
+margin: 5px;
+border-radius: 4px;
+/* background-image: url("https://images.unsplash.com/photo-1666837147745-1c9dea9908a4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw3MDY2fDB8MXxjb2xsZWN0aW9ufDF8MzE3MDk5fHx8fHwyfHwxNjY3Mzc2NTYz&ixlib=rb-4.0.3&q=80&w=400"); */
+background-size: cover;
+border: none;
+}
 
 
-
-
+.selected{
+    border:3px solid #1B78BC;
+}
 
 
 

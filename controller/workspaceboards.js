@@ -15,20 +15,38 @@ module.exports.getAllWorkspaceBoard = (req, res) => {
     .catch((err) => console.log(err));
 };
 module.exports.getAllByIdWorkspaceBoard = (req, res) => {
-  let { id } = req.params;
-  db.execute("SELECT * FROM tbl_workspaceboards WHERE id = ?", [id])
+  let boards;
+  let cards;
+  let { id, boardID } = req.params;
+  console.log(req.params);
+  db.execute("SELECT * FROM tbl_workspaceboards WHERE workspaceID = ?", [
+    id,
+  ]).then((data) => {
+    let [rows] = data;
+    boards = rows;
+    console.log(rows);
+    // res.render("workspaceBoard.ejs", {
+    //   data: rows,
+    // });
+  });
+  return db
+    .execute("SELECT * FROM tbl_boardcards WHERE boardID = ?", [boardID])
     .then((data) => {
-      let [rows] = data;
-      res.status(200).json({
-        data: rows,
+      let [cards] = data;
+      console.log(cards);
+      res.render("workspaceBoard.ejs", {
+        data: boards,
+        data1: cards,
       });
     })
+
     .catch((err) => console.log(err));
 };
 
 module.exports.createWorkspaceBoard = (req, res) => {
   let workspaceId = req.params.id;
   let name = req.body.name;
+  let backgroundURL = req.body.boardBackgroundURL;
   if (!name) {
     res.status(200).json({
       message: "Invail name",
@@ -44,7 +62,7 @@ module.exports.createWorkspaceBoard = (req, res) => {
       } else {
         return db.execute(
           "INSERT INTO tbl_workspaceboards VALUE (?, ?, ?, ?)",
-          [id, name, workspaceId, null]
+          [id, name, workspaceId, backgroundURL]
         );
       }
     })
@@ -68,14 +86,13 @@ module.exports.updateWorkspaceBoard = (req, res) => {
     .catch((err) => console.log(err));
 };
 
-
-module.exports.deleteWorkspaceBoard = (req, res)=>{
-    let {id} = req.params
-    db.execute("DELETE FROM tbl_workspaceboards WHERE workspaceID =?", [id])
-    .then((data)=>{
-        res.status(200).json({
-            message:"Delete one successfully"
-        })
+module.exports.deleteWorkspaceBoard = (req, res) => {
+  let { id } = req.params;
+  db.execute("DELETE FROM tbl_workspaceboards WHERE workspaceID =?", [id])
+    .then((data) => {
+      res.status(200).json({
+        message: "Delete one successfully",
+      });
     })
-    .catch((err)=>console.log({message: err}))
-}
+    .catch((err) => console.log({ message: err }));
+};

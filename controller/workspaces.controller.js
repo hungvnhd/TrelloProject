@@ -1,12 +1,57 @@
 const db = require("../models/db");
+const _ = require("lodash");
 
 module.exports.getAllWorkspace = (req, res) => {
+  let workspaces;
   db.execute("SELECT * FROM tbl_workspaces")
     .then((data) => {
       let [rows] = data;
-      console.log(rows);
+      workspaces = rows;
+      // console.log(rows);
+
+      return db.execute("SELECT * FROM tbl_workspaceboards");
+    })
+    .then((data) => {
+      let [boards] = data;
+      // console.log(boards, workspaces);
+      // console.log(workspaces);
+      let result = boards.reduce((pre, cur) => {
+        if (!pre[`${cur.workspaceID}`]) {
+          pre[`${cur.workspaceID}`] = [];
+        }
+        pre[`${cur.workspaceID}`].push(cur);
+        return pre;
+      }, {});
+
+      let workspaceIdList = Object.keys(result);
+      let boardsById = Object.values(result);
+      console.log(workspaceIdList);
+      console.log(boardsById);
+      // let findBoard = [];
+      // let findWorkspaceName = [];
+      // rows.forEach((e) => {
+
+      //   findBoard.push(rows1.filter((e1) => e1.workspaceID == e.id));
+      // });
+      // rows1.forEach((e) => {
+      //   findWorkspaceName.push(rows.filter((e1) => e1.id == e.workspaceID));
+      // });
+      // console.log(findBoard);
+      // console.log(findWorkspaceName);
+
+      // let newData = findBoard.reduce((pre, curr) => {
+      //   pre[curr].id = curr.workspaceID
+      //   pre[curr].boardName = curr.name
+      //   pre[curr].boardId = curr.id
+      //   pre[curr].board
+
+      // }, []);
+
       res.render("homepage.ejs", {
-        data: rows,
+        data: workspaces,
+        data1: boards,
+        workspaceIdList,
+        boardsById,
       });
     })
     .catch((err) => {

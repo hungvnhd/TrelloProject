@@ -12,7 +12,8 @@ let createBoard = document.querySelectorAll(".create-new-board");
 let boardCreateForm = document.querySelectorAll(".form-create");
 // console.log(boardCreateForm);
 let backgroundSelection = document.querySelectorAll(".background-selections");
-console.log(backgroundSelection);
+// console.log(backgroundSelection);
+let testSelect = document.querySelectorAll(".background-selections");
 
 workspaceNameInput.onkeyup = () => {
   if (workspaceNameInput.value === "") {
@@ -73,7 +74,7 @@ deleteBtn.forEach((e) => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        window.location.href = "workspace";
+        window.location.href = "/workspace";
       })
       .catch((err) => console.log(err));
   };
@@ -163,11 +164,57 @@ boardCreateForm.forEach((e) => {
       e.children[5].style.backgroundColor = "#1B78BC";
       e.children[5].style.color = "white";
       e.children[5].style.cursor = "pointer";
+      console.log(e.parentElement.children[3].children[0].children[0]);
+      let backgroundURL = "";
+      if (
+        e.parentElement.children[3].children[0].children[0].classList.contains(
+          "selected"
+        )
+      ) {
+        backgroundURL =
+          e.parentElement.children[3].children[0].children[0].style.backgroundImage.split(
+            `"`
+          )[1];
+      } else if (
+        e.parentElement.children[3].children[1].children[0].classList.contains(
+          "selected"
+        )
+      ) {
+        backgroundURL =
+          e.parentElement.children[3].children[1].children[0].style.backgroundImage.split(
+            `"`
+          )[1];
+      } else if (
+        e.parentElement.children[3].children[2].children[0].classList.contains(
+          "selected"
+        )
+      ) {
+        backgroundURL =
+          e.parentElement.children[3].children[2].children[0].style.backgroundImage.split(
+            `"`
+          )[1];
+      } else if (
+        e.parentElement.children[3].children[3].children[0].classList.contains(
+          "selected"
+        )
+      ) {
+        backgroundURL =
+          e.parentElement.children[3].children[3].children[0].style.backgroundImage.split(
+            `"`
+          )[1];
+
+        // .replace("url(", "")
+        // .replace(")", "")
+        // .replace(`"`, "");
+      }
+
+      console.log(backgroundURL);
       e.onsubmit = (event) => {
         event.preventDefault();
         let data = {
           workspaceId: e.classList[1],
           name: e.newBoardName.value,
+          boardBackgroundURL: backgroundURL,
         };
         fetch(`/workspaceboard/${e.classList[1]}`, {
           method: "POST", // or 'PUT'
@@ -188,3 +235,86 @@ boardCreateForm.forEach((e) => {
     }
   };
 });
+
+testSelect.forEach((e1) => {
+  e1.children[0].children[0].onclick = () => {
+    if (e1.children[0].children[0].classList.contains("selected")) {
+      e1.children[0].children[0].classList.remove("selected");
+    } else {
+      e1.children[0].children[0].classList.add("selected");
+      e1.children[1].children[0].classList.remove("selected");
+      e1.children[2].children[0].classList.remove("selected");
+      e1.children[3].children[0].classList.remove("selected");
+    }
+  };
+  e1.children[1].children[0].onclick = () => {
+    if (e1.children[1].children[0].classList.contains("selected")) {
+      e1.children[1].children[0].classList.remove("selected");
+    } else {
+      e1.children[1].children[0].classList.add("selected");
+      e1.children[0].children[0].classList.remove("selected");
+      e1.children[2].children[0].classList.remove("selected");
+      e1.children[3].children[0].classList.remove("selected");
+    }
+  };
+  e1.children[2].children[0].onclick = () => {
+    if (e1.children[2].children[0].classList.contains("selected")) {
+      e1.children[2].children[0].classList.remove("selected");
+    } else {
+      e1.children[2].children[0].classList.add("selected");
+      e1.children[1].children[0].classList.remove("selected");
+      e1.children[0].children[0].classList.remove("selected");
+      e1.children[3].children[0].classList.remove("selected");
+    }
+  };
+  e1.children[3].children[0].onclick = () => {
+    if (e1.children[3].children[0].classList.contains("selected")) {
+      e1.children[3].children[0].classList.remove("selected");
+    } else {
+      e1.children[3].children[0].classList.add("selected");
+      e1.children[1].children[0].classList.remove("selected");
+      e1.children[2].children[0].classList.remove("selected");
+      e1.children[0].children[0].classList.remove("selected");
+    }
+  };
+
+  // e.children[0].children[0].classList.add("selected");
+});
+
+// for (let i = 0; i < testSelect.length; i++) {
+//   testSelect[i].selected = false;
+// }
+
+// testSelect[0].onclick = () => {
+//   testSelect[0].selected = true;
+//   testSelect[1].selected = false;
+//   testSelect[2].selected = false;
+//   testSelect[3].selected = false;
+// };
+// testSelect[1].onclick = () => {
+//   testSelect[0].selected = false;
+//   testSelect[1].selected = true;
+//   testSelect[2].selected = false;
+//   testSelect[3].selected = false;
+// };
+// testSelect[2].onclick = () => {
+//   testSelect[0].selected = false;
+//   testSelect[1].selected = false;
+//   testSelect[2].selected = true;
+//   testSelect[3].selected = false;
+// };
+// testSelect[3].onclick = () => {
+//   testSelect[0].selected = false;
+//   testSelect[1].selected = false;
+//   testSelect[2].selected = false;
+//   testSelect[3].selected = true;
+// };
+// for (let i = 0; i < testSelect.length; i++) {
+//   if (testSelect[i].selected == true) {
+//     testSelect[i].onclick = () => {
+//       console.log(1);
+//     };
+//   }
+// }
+
+// backgroundSelection.forEach(e);

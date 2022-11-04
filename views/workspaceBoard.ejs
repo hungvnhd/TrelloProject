@@ -140,22 +140,20 @@
         </div>
         <div class="user-boards">
           <div class="workspace-views">Your boards</div>
+          <% for( let i = 0; i < data.length; i++ ) { %>
+          
+          
           <div class="user-boards__items">
-            <img src="https://images.pexels.com/photos/2258536/pexels-photo-2258536.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="">
-            <span>Board Name 1</span>
+            <img src="<%= data[i].boardBackgroundURL%>" alt="">
+            <span><%= data[i].name%></span>
           </div>
-          <div class="user-boards__items">
-            <img src="https://images.pexels.com/photos/2258536/pexels-photo-2258536.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="">
-            <span>Board Name 2</span>
-          </div>
-          <div class="user-boards__items">
-            <img src="https://images.pexels.com/photos/2258536/pexels-photo-2258536.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="">
-            <span>Board Name 3</span>
-          </div>
-          <div class="user-boards__items">
-            <img src="https://images.pexels.com/photos/2258536/pexels-photo-2258536.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="">
-            <span>Board Name 4</span>
-          </div>
+          <style>
+            body{
+              background-image: url('<%=data[i].boardBackgroundURL%>');
+            }
+          </style>
+          <% } %>
+         
         </div>
       </div>
       <div class="rightside-layout">
