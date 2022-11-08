@@ -10,3 +10,7 @@ module.exports.renderBoard = (req, res) => {
 module.exports.renderAdmin =(req, res)=>{
   res.render("admin.ejs")
 }
+
+module.exports.renderUserProfile =(req, res)=>{
+  res.render("userprofile")
+}

@@ -31,6 +31,7 @@ registerForm.addEventListener("submit", function (e) {
     url,
   };
 
+
   if (inputEmail.value == "") {
     inputEmail.style.border = "1px solid red";
   }

@@ -14,6 +14,7 @@ let workspaceRoutes = require("./routes/workspace.routes");
 let workspaceBoardRoutes = require("./routes/workspaceboard.routes");
 let boardcardRoutes = require("./routes/boardcard.routes");
 let cardtodoRoutes = require("./routes/cardtodo.routes");
+let userprofileRoutes = require("./routes/user.routes")
 const {
   requireAuth,
   notRequireAuth,
@@ -53,6 +54,10 @@ app.use("/workspaceboard", workspaceBoardRoutes);
 app.use("/boardcard", boardcardRoutes);
 
 app.use("/cardtodo", cardtodoRoutes);
+
+
+app.use("/users", userprofileRoutes);
+
 
 app.listen(3000, () => {
   console.log("server is running on port http://127.0.0.1:3000");

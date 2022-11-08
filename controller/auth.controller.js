@@ -52,7 +52,7 @@ module.exports.register = (req, res) => {
           email,
           password,
           null,
-          null
+          null,
         ]);
       }
     })
@@ -92,7 +92,7 @@ module.exports.login = (req, res) => {
           });
         } else {
           res.cookie("userId", find.user_id, { signed: true });
-          res.cookie("role", find.role, { signed: true }); 
+          res.cookie("role", find.role, { signed: true });
 
           res.status(200).json({
             message: "Login Successfully",

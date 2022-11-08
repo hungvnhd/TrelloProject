@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="/userProfile.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <nav class="usernav-bar">
+      <div>
+        <a href="/workspace"><img
+            src="https://a.trellocdn.com/prgb/dist/images/header-logo-spirit-loading.87e1af770a49ce8e84e3.gif"
+            alt=""
+          /></a>
+      </div>
+      <div>
+        <div class="dropdown">
+          <button
+            class="nav-dropdown"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Workspaces <span><i class="fa-solid fa-angle-down"></i></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="dropdown">
+          <button
+            class="nav-dropdown"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Recent
+            <i class="fa-solid fa-angle-down"></i>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="dropdown">
+          <button
+            class="nav-dropdown"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Starred
+            <i class="fa-solid fa-angle-down"></i>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="dropdown">
+          <button
+            class="nav-dropdown"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Templates
+            <i class="fa-solid fa-angle-down"></i>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <button class="nav-create-btn">
+          Create <i class="fa-solid fa-plus"></i>
+        </button>
+      </div>
+
+      <div class="searchUser">
+        <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+        <input type="text" placeholder="Search" class="nav-search" id="nav-search" />
+        <i class="fa-regular fa-bell"></i>
+        <span id="text-name" class="text-logoUser"><%= data[0].name %> </span>
+
+      </div>
+    </nav>
+
+    <div class="container-userpfrofile">
+      <div class="box-userprofile">
+        <div class="wrapper-div1">
+          <div class="box-div1">  
+            <span id="userName" class="text-userLogo"
+              ><%= data[0].name %>
+            </span>
+            <span class="textUser"><%= data[0].name %></span>
+     
+
+          </div>
+        </div>
+      </div>
+
+      <div class="wrapper-div2">
+        <ul class="textProfile" id="textProfile">
+          <li class="li-text"><a class="aText" href="">Profile and visibility</a></li>
+          <li><a class="aText" href="">Activity</a></li>
+          <li><a class="aText" href="">Cards</a></li>
+          <li><a class="aText" href="">Settings</a></li>
+        </ul>
+      </div>
+
+      <div class="wrapper-div3">
+        <div class="userBox">
+          <div class="img-logo">
+            <img class="img1" src="/userprofile.svg" alt="logoUserprofile" />
+          </div>
+          <h2>Manage your personal information</h2>
+          <div class="ptext">
+            <p>
+              This is an Atlassian account. Edit your personal information and
+              visibility settings through your <a href="">Atlassian profile.</a>
+            </p>
+            <p>
+              To learn more, view our <a href="">Terms of Service</a> or
+              <a href="">Privacy Policy</a>
+            </p>
+          </div>
+          <h3>About</h3>
+        </div>
+        <div class="children">
+          <form action="">
+            <div class="userName">
+              <label for="">Username</label>
+              <div class="logopublic">
+                <i class="fa-solid fa-earth-americas"></i
+                ><span>Always public</span>
+              </div>
+            </div>
+            <input type="text" />
+            <div class="userBio">
+              <label for="">Bio</label>
+              <div class="logopublic">
+                <i class="fa-solid fa-earth-americas"></i
+                ><span>Always public</span>
+              </div>
+            </div>
+            <textarea
+              class="userChat"
+              name=""
+              id=""
+              cols="5"
+              rows="3"
+            ></textarea>
+            <div><button class="btnSave">Save</button></div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.js"
+      integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdn.jsdelivr.net/combine/npm/sortablejs@1.15.0,npm/sortablejs@1.15.0/Sortable.min.js"></script>
+    <script src="/userprofile.js"></script>
+  </body>
+</html>

@@ -29,7 +29,7 @@ module.exports.getAllIdWorkspace = (req, res) => {
 module.exports.createWorkspace = (req, res) => {
   let { name } = req.body;
   let userId = req.signedCookies.userId;
-  // console.log(userId);
+  console.log(userId);
   if (!name) {
     return res.status(500).json({
       message: "Invail name",
