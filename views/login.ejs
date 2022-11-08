@@ -25,19 +25,20 @@
         <div class="sign-up-form">
           <div class="sign-up-form__title">Sign in your Trello account</div>
   
-          <form action="">
+          <form action="" id="login-form">
             <div>
-              <input type="email" placeholder="Email" />
+              <input type="email" name="email" placeholder="Email" /><br>
             </div>
             <div>
-              <input type="password" placeholder="Password" />
-            </div>
-            <div>
-              <input type="password" placeholder="Confirm password" />
+              <input type="password" name="password" placeholder="Password" /><br>
+            <div class="message"></div>
             </div>
             
             <div>
               <button id="sign-up-form__button">Continue</button>
+            </div>
+            <div id="sign-up-redirect">
+              <a href="/auth/register" >Sign up new account</a>
             </div>
             <div>OR</div>
             <div>
@@ -61,6 +62,7 @@
           </form>
         </div>
       </div>
-  
+
+      <script src="/login.js"></script>
   </body>
 </html>

@@ -1,33 +1,15 @@
-module.exports.renderHomepage = (req, res) => {
-  res.render("homepage.ejs");
-};
-module.exports.renderBoard = (req, res) => {
-  res.render("workspaceBoard.ejs");
-};
-
-module.exports.renderAdmin = (req, res) => {
-  res.render("admin.ejs");
-};
 const db = require("../models/db");
 const _ = require("lodash");
 
 module.exports.getAllWorkspace = (req, res) => {
+  let userID = req.signedCookies.userId;
   let workspaces;
-  db.execute("SELECT * FROM tbl_workspaces")
+  db.execute("SELECT * FROM tbl_workspaces WHERE user_id=?", [userID])
     .then((data) => {
       let [rows] = data;
       workspaces = rows;
       // console.log(rows);
 
-<<<<<<< HEAD
-module.exports.renderAdmin =(req, res)=>{
-  res.render("admin.ejs")
-}
-
-module.exports.renderUserProfile =(req, res)=>{
-  res.render("userprofile")
-}
-=======
       return db.execute("SELECT * FROM tbl_workspaceboards");
     })
     .then((data) => {
@@ -74,37 +56,46 @@ module.exports.getAllIdWorkspace = (req, res) => {
 module.exports.createWorkspace = (req, res) => {
   let { name } = req.body;
   let userId = req.signedCookies.userId;
-  // console.log(userId);
+  console.log(userId);
   if (!name) {
     return res.status(500).json({
       message: "Invail name",
     });
   }
   let id = Math.floor(Math.random() * 1000000);
-  db.execute("SELECT * FROM tbl_workspaces WHERE name = ?", [name])
-    .then((data) => {
+  db.execute("SELECT * FROM tbl_workspaces WHERE name = ?", [name]).then(
+    (data) => {
       let [rows] = data;
       // console.log(data);
       if (rows.length > 0) {
         return Promise.reject("User already exist");
       } else {
-        return db.execute("INSERT INTO tbl_workspaces VALUES(?, ?, ?)", [
+        db.execute("INSERT INTO tbl_workspaces VALUES(?, ?, ?)", [
           id,
           userId,
           name,
-        ]);
+        ])
+          .then((data) => {
+            let id2 = Math.floor(Math.random() * 100000);
+            console.log(data);
+            db.execute("INSERT INTO tbl_workspaceboards VALUES(?, ?, ?, ?)", [
+              id2,
+              "Board Template",
+              id,
+              "https://images.pexels.com/photos/15286/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+            ]);
+
+            res.status(200).json({
+              message: "Create one succesfully",
+            });
+            // res.render("homepage.ejs", {
+            //   id: id,
+            // });
+          })
+          .catch((err) => console.log(err));
       }
-    })
-    .then((data) => {
-      console.log(data);
-      res.status(200).json({
-        message: "Create one succesfully",
-      });
-      // res.render("homepage.ejs", {
-      //   id: id,
-      // });
-    })
-    .catch((err) => console.log(err));
+    }
+  );
 };
 
 module.exports.updateWorkspace = (req, res) => {
@@ -130,4 +121,3 @@ module.exports.deleteWorkspace = (req, res) => {
     })
     .catch((err) => console.log(err));
 };
->>>>>>> 1c7bdc100960095ecf280d5db78c7ac2d965a265

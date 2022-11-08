@@ -107,19 +107,189 @@
         </div>
       </div>
       <div>
-        <button class="nav-create-btn">
+        <button class="nav-create-btn"
+        type="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false">
           Create <i class="fa-solid fa-plus"></i>
         </button>
+        <ul class="dropdown-menu create-board">
+          <li class="create-board"><a class="dropdown-item" href="#">Action</a></li>
+          
+        </ul>
       </div>
       <div class="nav-right">
-        <div><input type="text" placeholder="search" class="nav-search" /></div>
-      </div>
+        <div class="avatar">
+         h
+        </div>
     </nav>
+
+    <div class="main-layout">
+      <div>
+        <div class="main-layout-left">
+          <div class="left-items"><span><i class="fa-brands fa-flipboard"></i></span>Boards</div>  
+          <div class="left-items"><span><i class="fa-brands fa-trello"></i></span>Templates</div>
+          <div class="left-items"><span><i class="fa-solid fa-house"></i></span>Home</div>
+        </div>
+        <div class="main-layout-left__second">
+          <div class="second-workspaces__title">
+            <div class="workspaces-title">Workspaces</div>
+           
+            <button class="create-new-workspace btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-plus"></i></button>
+             <!-- bootstrap -->
+             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-xl">
+                <div class="modal-content create-workspace">
+                  <div class="modal-header no-border">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body modal-body-layout">
+                    <div class="create-header">
+                      Let's build a workspace
+                    </div>
+                    <div class="create-content">
+                      Boost your productivity by making it easier for <br> everyone to access boards in one location.
+                    </div>
+                    <form action="" id="create-workspace-form">
+                      <div class="form-workspace-name">
+                          Workspace name
+                      </div>
+                      <div>
+                        <input type="text" placeholder="Taco's Co." name="workspaceName" class="form-workspace-name-input">
+                      </div>
+                      <div class="form-descriptions">
+                        This is the name of your company, team or organization
+                      </div>
+                      <div class="form-workspace-name">
+                          Workspace descriptions(Optional)
+                      </div>
+                      <div>
+                        <textarea name="" id="" cols="50" rows="10" placeholder="Our team organizes everything here"></textarea>
+                      </div>
+                      <div class="form-descriptions">
+                        Get your members on board with a few words about your Workspace.
+                      </div>
+                      <button class="form-create-submit-btn">Continue</button>
+                    </form>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+            
+            <!-- bootstrap -->
+          </div>
+          <div class="workspaces-left-layout">
+            <% for( let i = 0; i < data.length; i++ ) { %>
+            
+            <div class="<%= data[i].id%> workspace-loader">
+            <div>
+              <span class="workspaces-name"><span class="workspace-icon"><%=data[i].name.charAt().toUpperCase()  %> </span> <%= data[i].name  %> <button class="edit-btn">Edit</i></butt> </span>
+            </div>
+            <div class="workspace-list-items">
+              <div class="workspace-items"><span><i class="fa-brands fa-flipboard"></i></span>Boards</div>
+              <div class="workspace-items"><span><i class="fa-regular fa-heart"></i></span>Highlights</div>
+              <div class="workspace-items"><span><i class="fa-solid fa-eye"></i></span>Views</div>
+              <div class="workspace-items"><span><i class="fa-solid fa-users"></i></span>Members</div>
+              <div class="workspace-items"><span><i class="fa-solid fa-gear"></i></span>Settings</div>
+              <div class="workspace-items delete-btn"><span><i class="fa-solid fa-trash"></i></span>Delete</div>
+              
+  
+            </div>
+          </div>
+            <% } %>
+          </div>
+        </div>
+      </div>
+      <div class="right-layout">
+        <div class="workspace-title">YOUR WORKSPACES</div>
+        <% for( let i = 0; i < data.length; i++ ) { %>
+        
+       
+        <div class="workspace-selections">
+          <div> 
+            <span class="workspaces-name"><span class="workspace-icon"><%=data[i].name.charAt().toUpperCase()  %> </span> <%= data[i].name  %> </span>
+          </div>
+          <div class="selections-items"><span><i class="fa-brands fa-flipboard"></i></span>Boards</div>
+          <div class="selections-items"><span><i class="fa-solid fa-eye"></i></span>View</div>
+          <div class="selections-items"><span><i class="fa-solid fa-users"></i></span>Members</div>
+          <div class="selections-items"><span><i class="fa-solid fa-gear"></i></span>Settings</div>
+          <div class="selections-items relative">
+            <div class="create-new-board">
+              <span>
+                <i class="fa-solid fa-plus"></i>
+              </span>
+             <span>Create new board</span> 
+            </div>
+            
+            <div class="board-create none">
+              <div class="create-board-text"><span >Create board</span> <span class="close-button"><i class="fa-solid fa-xmark"></i></span></div>
+              <div class="create-template">
+                <img src="/Screenshot 2022-11-02 142548.png" alt="">
+              </div>
+              <div class="create-title">Background</div>
+  
+              <ul class="background-selections">
+                <li class="test-select">
+                  <button style="background-image: url('https://images.unsplash.com/photo-1666837147745-1c9dea9908a4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw3MDY2fDB8MXxjb2xsZWN0aW9ufDF8MzE3MDk5fHx8fHwyfHwxNjY3Mzc2NTYz&ixlib=rb-4.0.3&q=80&w=400')" class="select-img"></button>
+                </li>
+                <li class="test-select">
+                  <button style="background-image: url('https://images.pexels.com/photos/15286/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')" class="select-img"></button>
+                </li>
+                <li class="test-select">
+                  <button style="background-image: url('https://images.pexels.com/photos/2478248/pexels-photo-2478248.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')" class="select-img"></button>
+                </li>
+                <li class="test-select">
+                  <button style="background-image: url('https://images.pexels.com/photos/872831/pexels-photo-872831.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')" class="select-img"></button>
+                </li>
+                
+               
+                
+              </ul>
+              <div class="create-title">Board title</div>
+              <form action="" class="form-create <%= data[i].id%>">
+              <div> <input type="text" name="newBoardName"></div>
+              <div class="create-board-warning">Board title is required</div>
+              <div class="create-title">Workspace</div>
+              <div class="create-board-workspace-name">Trello Workspace</div>
+              <div class="create-board-warning">This Workspace has 6 boards remaining. Free Workspaces can only have 10 open boards. For unlimited boards, upgrade your Workspace.</div>
+              <button class="create-board-submit-btn ">Create</button>
+            </form>
+  
+  
+  
+            </div>  
+          </div>
+
+          
+
+        </div>
+        <div class="display-boards">
+         
+          <div class="row">
+            <% for( let j = 0; j < boardsById[i].length; j++ ) { %>
+              <div class="col-3 boards-items <%= boardsById[i][j].id%> <%=data[i].id%>" style="background-image: url('<%=boardsById[i][j].boardBackgroundURL %>')" >
+                <%= boardsById[i][j].name %> 
+              </div>
+            <% } %>
+         
+          </div>
+          
+      
+        </div>
+        <% } %>
+      </div>
+    </div>
+
+   
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
       crossorigin="anonymous"
     ></script>
+    <script src="/homepage.js"></script>
   </body>
 </html>
+
