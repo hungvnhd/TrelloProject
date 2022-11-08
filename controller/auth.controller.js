@@ -46,13 +46,16 @@ module.exports.register = (req, res) => {
       if (rows.length > 0) {
         return Promise.reject("User already exist");
       } else {
-        return db.execute("INSERT INTO tbl_users VALUES(?, ?, ?, ?, ?, ?)", [
+        return db.execute("INSERT INTO tbl_users VALUES(?, ?, ?, ?, ?)", [
           id,
           null,
           email,
           password,
           null,
+<<<<<<< HEAD
           null,
+=======
+>>>>>>> 1c7bdc100960095ecf280d5db78c7ac2d965a265
         ]);
       }
     })

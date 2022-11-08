@@ -1,12 +1,39 @@
 const db = require("../models/db");
+const _ = require("lodash");
 
 module.exports.getAllWorkspace = (req, res) => {
-  db.execute("SELECT * FROM tbl_workspaces")
+  let userID = req.signedCookies.userId;
+  let workspaces;
+  db.execute("SELECT * FROM tbl_workspaces WHERE user_id=?", [userID])
     .then((data) => {
       let [rows] = data;
-      console.log(rows);
+      workspaces = rows;
+      // console.log(rows);
+
+      return db.execute("SELECT * FROM tbl_workspaceboards");
+    })
+    .then((data) => {
+      let [boards] = data;
+      // console.log(boards, workspaces);
+      // console.log(workspaces);
+      let result = boards.reduce((pre, cur) => {
+        if (!pre[`${cur.workspaceID}`]) {
+          pre[`${cur.workspaceID}`] = [];
+        }
+        pre[`${cur.workspaceID}`].push(cur);
+        return pre;
+      }, {});
+
+      let workspaceIdList = Object.keys(result);
+      let boardsById = Object.values(result);
+      console.log(workspaceIdList);
+      console.log(boardsById);
+
       res.render("homepage.ejs", {
-        data: rows,
+        data: workspaces,
+        data1: boards,
+        workspaceIdList,
+        boardsById,
       });
     })
     .catch((err) => {
@@ -36,30 +63,39 @@ module.exports.createWorkspace = (req, res) => {
     });
   }
   let id = Math.floor(Math.random() * 1000000);
-  db.execute("SELECT * FROM tbl_workspaces WHERE name = ?", [name])
-    .then((data) => {
+  db.execute("SELECT * FROM tbl_workspaces WHERE name = ?", [name]).then(
+    (data) => {
       let [rows] = data;
       // console.log(data);
       if (rows.length > 0) {
         return Promise.reject("User already exist");
       } else {
-        return db.execute("INSERT INTO tbl_workspaces VALUES(?, ?, ?)", [
+        db.execute("INSERT INTO tbl_workspaces VALUES(?, ?, ?)", [
           id,
           userId,
           name,
-        ]);
+        ])
+          .then((data) => {
+            let id2 = Math.floor(Math.random() * 100000);
+            console.log(data);
+            db.execute("INSERT INTO tbl_workspaceboards VALUES(?, ?, ?, ?)", [
+              id2,
+              "Board Template",
+              id,
+              "https://images.pexels.com/photos/15286/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+            ]);
+
+            res.status(200).json({
+              message: "Create one succesfully",
+            });
+            // res.render("homepage.ejs", {
+            //   id: id,
+            // });
+          })
+          .catch((err) => console.log(err));
       }
-    })
-    .then((data) => {
-      console.log(data);
-      res.status(200).json({
-        message: "Create one succesfully",
-      });
-      // res.render("homepage.ejs", {
-      //   id: id,
-      // });
-    })
-    .catch((err) => console.log(err));
+    }
+  );
 };
 
 module.exports.updateWorkspace = (req, res) => {

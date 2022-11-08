@@ -39,7 +39,7 @@ app.use(express.static("public"));
 app.use(cookieParser("secret"));
 
 app.get("/", requireAdmin, (req, res) => {
-  res.redirect("/user");
+  res.redirect("/workspace");
 });
 app.use("/admin", adminRoutes);
 
@@ -47,13 +47,13 @@ app.use("/auth", notRequireAuth, authRoutes);
 
 app.use("/user", requireAuth, userRoutes);
 
-app.use("/workspace", workspaceRoutes);
+app.use("/workspace", requireAuth, workspaceRoutes);
 
-app.use("/workspaceboard", workspaceBoardRoutes);
+app.use("/workspaceboard", requireAuth, workspaceBoardRoutes);
 
-app.use("/boardcard", boardcardRoutes);
+app.use("/boardcard", requireAuth, boardcardRoutes);
 
-app.use("/cardtodo", cardtodoRoutes);
+app.use("/cardtodo", requireAuth, cardtodoRoutes);
 
 
 app.use("/users", userprofileRoutes);

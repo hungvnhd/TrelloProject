@@ -119,8 +119,8 @@
         </ul>
       </div>
       <div class="nav-right">
-        <div>
-          <input type="text" placeholder="search" class="nav-search" />
+        <div class="avatar">
+         h
         </div>
     </nav>
 
@@ -230,20 +230,23 @@
               </div>
               <div class="create-title">Background</div>
   
-              <div class="background-selections">
-                <div>
-                  <img src="https://images.pexels.com/photos/733745/pexels-photo-733745.jpeg?auto=compress&cs=tinysrgb&w=800" alt="">
-                </div>
-                <div>
-                  <img src="https://images.pexels.com/photos/733745/pexels-photo-733745.jpeg?auto=compress&cs=tinysrgb&w=800" alt="">
-                </div>
-                <div>
-                  <img src="https://images.pexels.com/photos/733745/pexels-photo-733745.jpeg?auto=compress&cs=tinysrgb&w=800" alt="">
-                </div>
-                <div>
-                  <img src="https://images.pexels.com/photos/733745/pexels-photo-733745.jpeg?auto=compress&cs=tinysrgb&w=800" alt="">
-                </div>
-              </div>
+              <ul class="background-selections">
+                <li class="test-select">
+                  <button style="background-image: url('https://images.unsplash.com/photo-1666837147745-1c9dea9908a4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw3MDY2fDB8MXxjb2xsZWN0aW9ufDF8MzE3MDk5fHx8fHwyfHwxNjY3Mzc2NTYz&ixlib=rb-4.0.3&q=80&w=400')" class="select-img"></button>
+                </li>
+                <li class="test-select">
+                  <button style="background-image: url('https://images.pexels.com/photos/15286/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')" class="select-img"></button>
+                </li>
+                <li class="test-select">
+                  <button style="background-image: url('https://images.pexels.com/photos/2478248/pexels-photo-2478248.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')" class="select-img"></button>
+                </li>
+                <li class="test-select">
+                  <button style="background-image: url('https://images.pexels.com/photos/872831/pexels-photo-872831.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')" class="select-img"></button>
+                </li>
+                
+               
+                
+              </ul>
               <div class="create-title">Board title</div>
               <form action="" class="form-create <%= data[i].id%>">
               <div> <input type="text" name="newBoardName"></div>
@@ -263,12 +266,14 @@
 
         </div>
         <div class="display-boards">
+         
           <div class="row">
-            <div class="col-3 boards-items">hello1</div>
-            <div class="col-3 boards-items">hello2</div>
-            <div class="col-3 boards-items">hello3</div>
-            <div class="col-3 boards-items">hello4</div>
-            
+            <% for( let j = 0; j < boardsById[i].length; j++ ) { %>
+              <div class="col-3 boards-items <%= boardsById[i][j].id%> <%=data[i].id%>" style="background-image: url('<%=boardsById[i][j].boardBackgroundURL %>')" >
+                <%= boardsById[i][j].name %> 
+              </div>
+            <% } %>
+         
           </div>
           
       

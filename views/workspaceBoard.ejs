@@ -24,6 +24,11 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="/workspaceBoard.css" />
+    <style>
+      body{
+        background-image: url('<%=data2[0].boardBackgroundURL%>');
+      }
+    </style>
     <title>Document</title>
   </head>
   <body>
@@ -112,15 +117,15 @@
         </button>
       </div>
       <div class="nav-right">
-        <div>
-          <input type="text" placeholder="search" class="nav-search" />
+        <div class="avatar">
+          H
         </div>
     </nav>
 
     <div class="main-layout">
       <div class="leftside-nav">
-        <div class="workspace-name">
-          Trello Workspace
+        <div class="workspace-name" style="color:white;font-size:22px;">
+          <%= data4[0].name%>
         </div>
         <div>
           <div class="left-items"><span><i class="fa-brands fa-flipboard"></i></span>Boards</div>  
@@ -140,169 +145,61 @@
         </div>
         <div class="user-boards">
           <div class="workspace-views">Your boards</div>
-          <div class="user-boards__items">
-            <img src="https://images.pexels.com/photos/2258536/pexels-photo-2258536.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="">
-            <span>Board Name 1</span>
+          <% for( let i = 0; i < data.length; i++ ) { %>
+          
+          
+          <div class="user-boards__items <%= data[i].id %> ">
+            <img src="<%= data[i].boardBackgroundURL%>" alt="">
+            <span><%= data[i].name%></span>
           </div>
-          <div class="user-boards__items">
-            <img src="https://images.pexels.com/photos/2258536/pexels-photo-2258536.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="">
-            <span>Board Name 2</span>
-          </div>
-          <div class="user-boards__items">
-            <img src="https://images.pexels.com/photos/2258536/pexels-photo-2258536.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="">
-            <span>Board Name 3</span>
-          </div>
-          <div class="user-boards__items">
-            <img src="https://images.pexels.com/photos/2258536/pexels-photo-2258536.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="">
-            <span>Board Name 4</span>
-          </div>
+          
+          <% } %>
+          
         </div>
       </div>
       <div class="rightside-layout">
         <div class="rightside-layout__title">
-         Board Name 1
+         <span style="color: white;font-size:20px; background-color:none;"><%= data[0].name %> </span> 
           <span><i class="fa-regular fa-star"></i></span>
           <span><i class="fa-solid fa-users"></i>Workspace visible</span>
           <span><i class="fa-solid fa-bolt"></i>Automation</span>
           <span><i class="fa-solid fa-rocket"></i>Power-Ups</span>
           <span><i class="fa-solid fa-filter"></i>Filter</span>
-           <span><i class="fa-regular fa-plus"></i>Add another list</span>
-          </span>
+           <span class="add-a-list checked"><i class="fa-regular fa-plus"></i>Add another list</span>
+          
         </div>
-        <div class="cards-layout row" id="cards-layout">
-          <div class="col-3">
-          <li class="cards">
+        <div class="cards-layout " id="cards-layout">
+          <% for( let i = 0; i < data1.length; i++ ) { %>
+          
+          
+          <div >
+            
+            
+          <li class="cards <%= data1[i].id1 %> ">
             <div class="card-name">
-               To do 
+               <%= data1[i].name %>  
             </div>
+
             <ul class="list-card-todo" id="list-card-todo">
-              <li class="card-todo">
-                123123
+              <% for( let j = 0; j < data3.length; j++ ) { %>
+              
+              
+              <li class="card-todo <%= data3[j].id %> <%=data3[j].cardID %> ">
+                <%=data3[j].name%>
               </li>
-              <li class="card-todo">
-                123123
-              </li>
-              <li class="card-todo">
-                123123
-              </li>
+              <% } %> 
+              
             </ul>
             <div class="cards-create"><i class="fa-regular fa-plus"></i>Add a card</div>
              </li>
+             
            </div>
-           <div class="col-3">
-            <li class="cards">
-              <div class="card-name">
-                 To do 
-              </div>
-              <ul class="list-card-todo" id="list-card-todo">
-                <li class="card-todo">
-                  123123
-                </li>
-                <li class="card-todo">
-                  123123
-                </li>
-                <li class="card-todo">
-                  123123
-                </li>
-              </ul>
-              <div class="cards-create"><i class="fa-regular fa-plus"></i>Add a card</div>
-               </li>
-             </div>
-             <div class="col-3">
-              <li class="cards">
-                <div class="card-name">
-                   To do 
-                </div>
-                <ul class="list-card-todo" id="list-card-todo">
-                  <li class="card-todo">
-                    123123
-                  </li>
-                  <li class="card-todo">
-                    123123
-                  </li>
-                  <li class="card-todo">
-                    123123
-                  </li>
-                </ul>
-                <div class="cards-create"><i class="fa-regular fa-plus"></i>Add a card</div>
-                 </li>
-               </div>
-               <div class="col-3">
-                <li class="cards">
-                  <div class="card-name">
-                     To do 
-                  </div>
-                  <ul class="list-card-todo" id="list-card-todo">
-                    <li class="card-todo">
-                      123123
-                    </li>
-                    <li class="card-todo">
-                      123123
-                    </li>
-                    <li class="card-todo">
-                      123123
-                    </li>
-                  </ul>
-                  <div class="cards-create"><i class="fa-regular fa-plus"></i>Add a card</div>
-                   </li>
-                 </div>
-                 <div class="col-3">
-                  <li class="cards">
-                    <div class="card-name">
-                       To do 
-                    </div>
-                    <ul class="list-card-todo" id="list-card-todo">
-                      <li class="card-todo">
-                        123123
-                      </li>
-                      <li class="card-todo">
-                        123123
-                      </li>
-                      <li class="card-todo">
-                        123123
-                      </li>
-                    </ul>
-                    <div class="cards-create"><i class="fa-regular fa-plus"></i>Add a card</div>
-                     </li>
-                   </div>
-                   <div class="col-3">
-                    <li class="cards">
-                      <div class="card-name">
-                         To do 
-                      </div>
-                      <ul class="list-card-todo" id="list-card-todo">
-                        <li class="card-todo">
-                          123123
-                        </li>
-                        <li class="card-todo">
-                          123123
-                        </li>
-                        <li class="card-todo">
-                          123123
-                        </li>
-                      </ul>
-                      <div class="cards-create"><i class="fa-regular fa-plus"></i>Add a card</div>
-                       </li>
-                     </div>
-                     <div class="col-3">
-                      <li class="cards">
-                        <div class="card-name">
-                           To do 
-                        </div>
-                        <ul class="list-card-todo" id="list-card-todo">
-                          <li class="card-todo">
-                            123123
-                          </li>
-                          <li class="card-todo">
-                            123123
-                          </li>
-                          <li class="card-todo">
-                            123123
-                          </li>
-                        </ul>
-                        <div class="cards-create"><i class="fa-regular fa-plus"></i>Add a card</div>
-                         </li>
-                       </div>
+          
+           
+          
+           <% } %>
+          
+                      
                  
          
          
