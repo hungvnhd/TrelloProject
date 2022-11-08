@@ -5,8 +5,9 @@
     font-family: 'Open Sans', sans-serif;
 }
 body{
+    z-index: 0;
     width: 100%;
-    background: url("https://images.pexels.com/photos/2258536/pexels-photo-2258536.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+    /* background: url("https://images.pexels.com/photos/2258536/pexels-photo-2258536.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"); */
     background-size: cover;
 }
 
@@ -21,6 +22,8 @@ nav{
     backdrop-filter: blur(6px);
     max-height: 44px;
     padding: 6px 4px;
+    z-index: 999;
+    padding-left: 20px;
 }
 nav img{
     width: 90px;
@@ -234,10 +237,36 @@ margin-right: 20px;
 .cards-layout{
     margin-left: 30px;
     list-style: none;
+    display: flex;
 }
 .list-card-todo{
     list-style-position: inside;
     list-style: none;
     padding: 0;
     /* padding-left: 15px; */
+}
+.create-card-input{
+    width: 253px;
+    height:40px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.create-card-input:focus{
+    outline-color:#1B78BC;
+}
+.create-card-submit{
+    border:none;
+    background-color: #1B78BC;
+    border-radius: 4px;
+    color:white;
+    width: 70px;
+    height: 35px;
+}
+.create-card-close{
+    margin-left: 10px;
+    font-size: 22px;
+    cursor: pointer;
+}
+.none{
+    display: none;
 }

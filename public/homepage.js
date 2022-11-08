@@ -14,6 +14,8 @@ let boardCreateForm = document.querySelectorAll(".form-create");
 let backgroundSelection = document.querySelectorAll(".background-selections");
 // console.log(backgroundSelection);
 let testSelect = document.querySelectorAll(".background-selections");
+let boardsItems = document.querySelectorAll(".boards-items");
+console.log(boardsItems);
 
 workspaceNameInput.onkeyup = () => {
   if (workspaceNameInput.value === "") {
@@ -206,6 +208,11 @@ boardCreateForm.forEach((e) => {
         // .replace("url(", "")
         // .replace(")", "")
         // .replace(`"`, "");
+      } else {
+        backgroundURL =
+          e.parentElement.children[3].children[2].children[0].style.backgroundImage.split(
+            `"`
+          )[1];
       }
 
       console.log(backgroundURL);
@@ -281,40 +288,8 @@ testSelect.forEach((e1) => {
   // e.children[0].children[0].classList.add("selected");
 });
 
-// for (let i = 0; i < testSelect.length; i++) {
-//   testSelect[i].selected = false;
-// }
-
-// testSelect[0].onclick = () => {
-//   testSelect[0].selected = true;
-//   testSelect[1].selected = false;
-//   testSelect[2].selected = false;
-//   testSelect[3].selected = false;
-// };
-// testSelect[1].onclick = () => {
-//   testSelect[0].selected = false;
-//   testSelect[1].selected = true;
-//   testSelect[2].selected = false;
-//   testSelect[3].selected = false;
-// };
-// testSelect[2].onclick = () => {
-//   testSelect[0].selected = false;
-//   testSelect[1].selected = false;
-//   testSelect[2].selected = true;
-//   testSelect[3].selected = false;
-// };
-// testSelect[3].onclick = () => {
-//   testSelect[0].selected = false;
-//   testSelect[1].selected = false;
-//   testSelect[2].selected = false;
-//   testSelect[3].selected = true;
-// };
-// for (let i = 0; i < testSelect.length; i++) {
-//   if (testSelect[i].selected == true) {
-//     testSelect[i].onclick = () => {
-//       console.log(1);
-//     };
-//   }
-// }
-
-// backgroundSelection.forEach(e);
+boardsItems.forEach((e) => {
+  e.onclick = (event) => {
+    window.location.href = `workspaceboard/${event.target.classList[3]}/${event.target.classList[2]}`;
+  };
+});

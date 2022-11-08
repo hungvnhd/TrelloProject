@@ -16,27 +16,45 @@ module.exports.getAllWorkspaceBoard = (req, res) => {
 };
 module.exports.getAllByIdWorkspaceBoard = (req, res) => {
   let boards;
-  let cards;
+  // let cards;
   let { id, boardID } = req.params;
   console.log(req.params);
-  db.execute("SELECT * FROM tbl_workspaceboards WHERE workspaceID = ?", [
-    id,
-  ]).then((data) => {
-    let [rows] = data;
-    boards = rows;
-    console.log(rows);
-    // res.render("workspaceBoard.ejs", {
-    //   data: rows,
-    // });
-  });
-  return db
-    .execute("SELECT * FROM tbl_boardcards WHERE boardID = ?", [boardID])
+  // console.log(req.params);
+  db.execute("SELECT * FROM tbl_workspaceboards WHERE workspaceID = ?", [id])
     .then((data) => {
-      let [cards] = data;
-      console.log(cards);
-      res.render("workspaceBoard.ejs", {
-        data: boards,
-        data1: cards,
+      let [rows] = data;
+      boards = rows;
+      // console.log(boards);
+      db.execute("SELECT * FROM tbl_boardcards WHERE boardID = ?", [
+        boardID,
+      ]).then((data) => {
+        let [cards] = data;
+        // console.log(cards);
+        db.execute("SELECT * FROM tbl_workspaceboards WHERE id = ?", [
+          boardID,
+        ]).then((data) => {
+          let [boardsData] = data;
+          // console.log(boardsData);
+
+          db.execute("SELECT * FROM tbl_cardtodos").then((data) => {
+            let [todos] = data;
+            db.execute("SELECT * FROM tbl_workspaces WHERE id = ?", [id]).then(
+              (data) => {
+                let [workspaceData] = data;
+                console.log(workspaceData);
+                res.render("workspaceBoard.ejs", {
+                  data: boards,
+                  data1: cards,
+                  data2: boardsData,
+                  data3: todos,
+                  data4: workspaceData,
+                });
+              }
+            );
+            // console.log(todos);
+          });
+          // console.log(boardsData);
+        });
       });
     })
 

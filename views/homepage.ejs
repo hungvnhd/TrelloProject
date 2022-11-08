@@ -119,8 +119,8 @@
         </ul>
       </div>
       <div class="nav-right">
-        <div>
-          <input type="text" placeholder="search" class="nav-search" />
+        <div class="avatar">
+         h
         </div>
     </nav>
 
@@ -269,7 +269,7 @@
          
           <div class="row">
             <% for( let j = 0; j < boardsById[i].length; j++ ) { %>
-              <div class="col-3 boards-items" style="background-image: url('<%=boardsById[i][j].boardBackgroundURL %>')" >
+              <div class="col-3 boards-items <%= boardsById[i][j].id%> <%=data[i].id%>" style="background-image: url('<%=boardsById[i][j].boardBackgroundURL %>')" >
                 <%= boardsById[i][j].name %> 
               </div>
             <% } %>

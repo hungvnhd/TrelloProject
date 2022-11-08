@@ -4,9 +4,9 @@ const boardcardController = require("../controller/boardcard.controller");
 
 router.get("/", boardcardController.getAllBoardCard);
 
-router.get("/:id/", boardcardController.getAllByIdBoardCard);
+router.get("/:id/:boardID/:cardID", boardcardController.getAllByIdBoardCard);
 
-router.post("/", boardcardController.createBoardCard);
+router.post("/:id/:boardID", boardcardController.createBoardCard);
 
 router.put("/:id", boardcardController.updateBoardCard);
 
